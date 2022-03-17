@@ -1,0 +1,45 @@
+Datasets utilisés :
+Codes postaux - laposte_hesasmal.csv -  https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/ 
+Départements français - departement.csv - https://sql.sh/1879-base-donnees-departements-francais
+
+Ouvrez le fichier des codes postaux. 
+
+Combien de colonnes contient-il ? 
+6 colonnes : Code_commune_INSEE, Nom_commune, Code_postal, Libelle_acheminement, Ligne_5, Coordonnees_gps
+
+Comment ces colonnes sont-elles distribuées ? 
+
+
+Quelle sont les types des colonnes du fichier ?
+- Code_commune_INSEE : Int
+- Nom_commune : String
+- Code_postal : Int
+- Libelle_acheminement : String
+- Ligne_5 : String
+- Coordonnees_gps : Tuple( Float, Float)
+
+Lisez le fichier des codes postaux avec Spark et affichez son contenu dans la console. 
+
+Questions :
+
+Quel est le schéma du fichier ? 
+df.printSchema()
+
+Affichez le nombre de communes.
+df.select("Nom_commune").distinct.count()
+
+Affichez le nombre de communes qui possèdent l’attribut Ligne_5
+df.filter(df("Ligne_5").isNotNull).select("Nom_commune").distinct().count()
+
+Ajoutez aux données une colonne contenant le numéro de département de la commune. 
+df.withColumn("departement", df("Code_postal").substr(0,2))
+
+Ecrivez le résultat dans un nouveau fichier CSV nommé “commune_et_departement.csv”, ayant pour colonne Code_commune_INSEE, Nom_commune, Code_postal, departement, ordonné par code postal.
+df.select("Code_commune_INSEE", "Nom_commune", "Code_postal", "departement").orderBy("Code_postal").write.csv("commune_et_departement.csv")
+
+Affichez les communes du département de l’Aisne.
+df.select("Nom_commune").filter("departement = '02'").show()
+
+Quel est le département avec le plus de communes ?
+df.select("departement").groupBy("departement").count().orderBy(desc("count")).show()
+

@@ -1,0 +1,15 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(run, Some(49b29df0-7130-473f-aeb9-8ab9daf1e3f6), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Compile / run[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /mnt/d/OneDrive - Efrei/Bureau/ECOLE/DataEngineering/spark-df/target/scala-2.13/classes ...[0m
+[0m[[0m[31merror[0m] [0m[0m/mnt/d/OneDrive - Efrei/Bureau/ECOLE/DataEngineering/spark-df/src/main/scala/fr/data/spark/DataFrame.scala:28:26: ')' expected but '.' found.[0m
+[0m[[0m[31merror[0m] [0m[0m    print("Nombre : "  df.filter(df("Ligne_5").isNotNull).select("Nom_commune").distinct().count())[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/mnt/d/OneDrive - Efrei/Bureau/ECOLE/DataEngineering/spark-df/src/main/scala/fr/data/spark/DataFrame.scala:28:99: ';' expected but ')' found.[0m
+[0m[[0m[31merror[0m] [0m[0m    print("Nombre : "  df.filter(df("Ligne_5").isNotNull).select("Nom_commune").distinct().count())[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                                  ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 1 s, completed Mar 17, 2022 11:52:35 PM[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m
+[0m[[0m[0minfo[0m] [0m[0mshutting down sbt server[0m
